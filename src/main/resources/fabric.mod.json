@@ -3,25 +3,23 @@
 	"id": "storagemanager-api",
 	"version": "${version}",
 	"name": "StorageManager API",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "An API for manage storage systems in Minecraft backends.",
 	"authors": [
-		"Me!"
+		"superstrellaa"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/superstrellaa/StorageManager-API",
+		"sources": "https://github.com/superstrellaa/StorageManager-API",
+		"issues": "https://github.com/superstrellaa/StorageManager-API/issues"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/storagemanager-api/icon.png",
-	"environment": "*",
+	"environment": "server",
 	"entrypoints": {
 		"main": [
 			"es.superstrellaa.storagemanager.StorageManagerAPI"
 		]
 	},
-	"mixins": [
-		"storagemanager-api.mixins.json"
-	],
 	"depends": {
 		"fabricloader": ">=0.18.4",
 		"minecraft": "~1.21.1",
