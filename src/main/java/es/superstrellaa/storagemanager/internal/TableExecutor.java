@@ -4,6 +4,7 @@ import es.superstrellaa.storagemanager.StorageManagerAPI;
 import es.superstrellaa.storagemanager.api.data.RowData;
 import es.superstrellaa.storagemanager.api.schema.Column;
 import es.superstrellaa.storagemanager.api.schema.TableSchema;
+import es.superstrellaa.storagemanager.internal.cache.WriteCache;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +14,9 @@ import java.util.StringJoiner;
 
 public final class TableExecutor {
 
+    /**
+     * Crea una tabla según el esquema proporcionado
+     */
     public static void createTable(TableSchema schema) {
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS ")
@@ -46,7 +50,29 @@ public final class TableExecutor {
         execute(sql.toString());
     }
 
+    /**
+     * Inserta datos usando la caché (modo async, más rápido)
+     */
     public static void insert(String table, RowData data) {
+        insert(table, data, false);
+    }
+
+    /**
+     * Inserta datos con opción de bypass de caché
+     * @param immediate si es true, escribe inmediatamente a DB sin usar caché
+     */
+    public static void insert(String table, RowData data, boolean immediate) {
+        if (immediate) {
+            insertImmediate(table, data);
+        } else {
+            WriteCache.getInstance().queueInsert(table, data);
+        }
+    }
+
+    /**
+     * Inserción inmediata sin caché (para datos críticos)
+     */
+    private static void insertImmediate(String table, RowData data) {
         StringJoiner columns = new StringJoiner(", ");
         StringJoiner values = new StringJoiner(", ");
 
@@ -72,7 +98,14 @@ public final class TableExecutor {
         }
     }
 
+    /**
+     * SELECT siempre lee directamente de la DB
+     * Antes de leer, hace flush de la tabla para asegurar que los datos estén actualizados
+     */
     public static List<RowData> select(String table, Map<String, Object> where) {
+        // Flush antes de leer para tener datos actualizados por si acaso
+        WriteCache.getInstance().flushTable(table);
+
         List<RowData> results = new ArrayList<>();
 
         StringBuilder sql = new StringBuilder("SELECT * FROM ").append(table);
@@ -108,11 +141,29 @@ public final class TableExecutor {
         return results;
     }
 
+    /**
+     * Elimina usando caché por defecto
+     */
     public static void delete(String table, Map<String, Object> where) {
+        delete(table, where, false);
+    }
+
+    /**
+     * Elimina con opción de inmediatez
+     */
+    public static void delete(String table, Map<String, Object> where, boolean immediate) {
         if (where.isEmpty()) {
             throw new IllegalArgumentException("DELETE without WHERE is not allowed");
         }
 
+        if (immediate) {
+            deleteImmediate(table, where);
+        } else {
+            WriteCache.getInstance().queueDelete(table, where);
+        }
+    }
+
+    private static void deleteImmediate(String table, Map<String, Object> where) {
         String sql = "DELETE FROM " + table +
                 " WHERE " + buildWhereClause(where) + ";";
 

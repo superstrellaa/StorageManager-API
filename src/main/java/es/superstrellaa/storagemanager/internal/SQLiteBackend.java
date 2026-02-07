@@ -12,8 +12,6 @@ public final class SQLiteBackend {
 
     private static Connection connection;
 
-    //TODO: Separar esta barbaridad en otras clases auxiliares
-
     public static void init() {
         try {
             Path dbPath = StoragePaths.getDatabasePath();
