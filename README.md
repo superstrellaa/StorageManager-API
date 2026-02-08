@@ -8,7 +8,7 @@ StorageManager API
 
 <p align="center">
   <a href="https://github.com/superstrellaa/StorageManager-API/releases">
-    <img src="https://img.shields.io/github/v/release/superstrellaa/StorageManagerAPI?style=flat-square" />
+    <img src="https://img.shields.io/github/v/release/superstrellaa/StorageManager-API?style=flat-square" />
   </a>
   <img src="https://img.shields.io/badge/Minecraft-1.21-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/Loader-Fabric-blueviolet?style=flat-square" />
