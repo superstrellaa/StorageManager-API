@@ -3,7 +3,7 @@
 	"id": "storagemanager-api",
 	"version": "${version}",
 	"name": "StorageManager API",
-	"description": "An API for manage storage systems in Minecraft backends.",
+	"description": "An API for manage storage systems in Minecraft backends",
 	"authors": [
 		"superstrellaa"
 	],
@@ -32,7 +32,7 @@
 				"modmenu.donate" : "https://paypal.me/superstrella",
 				"modmenu.github_releases" : "https://github.com/superstrellaa/StorageManager-API/releases",
 				"modmenu.modrinth" : "https://modrinth.com/mod/StorageManager-API",
-				"modmenu.curseforge" : "https://www.curseforge.com/minecraft/mc-mods/storage-manager-api"
+				"modmenu.curseforge" : "https://www.curseforge.com/minecraft/mc-mods/storagemanager-api"
 			}
 		}
 	}

@@ -5,7 +5,9 @@ import es.superstrellaa.storagemanager.internal.SQLiteBackend;
 import es.superstrellaa.storagemanager.internal.cache.WriteCache;
 import es.superstrellaa.storagemanager.internal.lifecycle.ShutdownHook;
 import es.superstrellaa.storagemanager.internal.middleware.ServerGuard;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.Internal
 public final class ServerBootstrap {
 
     private static boolean initialized = false;
