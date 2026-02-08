@@ -3,6 +3,7 @@ package es.superstrellaa.storagemanager.internal.cache;
 import es.superstrellaa.storagemanager.StorageManagerAPI;
 import es.superstrellaa.storagemanager.api.data.RowData;
 import es.superstrellaa.storagemanager.internal.SQLiteBackend;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+@ApiStatus.Internal
 public final class WriteCache {
 
     private static final long FLUSH_INTERVAL_MS = 5000;

@@ -5,6 +5,7 @@ import es.superstrellaa.storagemanager.api.data.RowData;
 import es.superstrellaa.storagemanager.api.schema.Column;
 import es.superstrellaa.storagemanager.api.schema.TableSchema;
 import es.superstrellaa.storagemanager.internal.cache.WriteCache;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
+@ApiStatus.Internal
 public final class TableExecutor {
 
     /**

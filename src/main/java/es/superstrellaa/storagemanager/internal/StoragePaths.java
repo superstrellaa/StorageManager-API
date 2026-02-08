@@ -1,9 +1,11 @@
 package es.superstrellaa.storagemanager.internal;
 
 import net.fabricmc.loader.api.FabricLoader;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.nio.file.Path;
 
+@ApiStatus.Internal
 public final class StoragePaths {
 
     private static final Path BASE_DIR =

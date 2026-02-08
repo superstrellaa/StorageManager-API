@@ -1,6 +1,7 @@
 package es.superstrellaa.storagemanager.internal;
 
 import es.superstrellaa.storagemanager.StorageManagerAPI;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+@ApiStatus.Internal
 public final class SQLiteBackend {
 
     private static Connection connection;
