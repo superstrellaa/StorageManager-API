@@ -1,6 +1,6 @@
 package es.superstrellaa.storagemanager;
 
-import es.superstrellaa.storagemanager.internal.lifecycle.ServerBootstrap;
+import es.superstrellaa.storagemanager.internal.bootstrap.ServerBootstrap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
